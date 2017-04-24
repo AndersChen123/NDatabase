@@ -4,6 +4,7 @@ using NDatabase.Api;
 using NDatabase.Api.Query;
 using NDatabase.Core.Query.Criteria;
 using NDatabase.Exceptions;
+using System.Reflection;
 
 namespace NDatabase.Core.Query
 {
@@ -29,7 +30,7 @@ namespace NDatabase.Core.Query
             if (underlyingType == null)
                 throw new ArgumentNullException("underlyingType");
 
-            if (underlyingType.IsValueType)
+            if (underlyingType.GetTypeInfo().IsValueType)
                 throw new ArgumentException("Underlying type for query cannot to be value type.", "underlyingType");
 
             OrderByType = OrderByConstants.OrderByNone;

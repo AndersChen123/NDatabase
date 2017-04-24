@@ -134,7 +134,7 @@ namespace NDatabase.IO
 
         public void Dispose()
         {
-            _memoryStream.Close();
+            _memoryStream.Dispose();
             _memoryStream = null;
         }
     }

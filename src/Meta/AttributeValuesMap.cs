@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using NDatabase.Tool;
 using NDatabase.Api;
 
 namespace NDatabase.Meta

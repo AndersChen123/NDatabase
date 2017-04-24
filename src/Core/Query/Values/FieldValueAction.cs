@@ -7,6 +7,7 @@ using NDatabase.Api;
 using NDatabase.Core.Query.Execution;
 using NDatabase.Core.Query.List;
 using NDatabase.Meta;
+using System.Reflection;
 
 namespace NDatabase.Core.Query.Values
 {
@@ -40,8 +41,8 @@ namespace NDatabase.Core.Query.Values
 
         private static bool IsGenericCollection(Type type)
         {
-            return type.GetInterfaces()
-                            .Any(x => x.IsGenericType &&
+            return type.GetTypeInfo().ImplementedInterfaces
+                            .Any(x => x.GetTypeInfo().IsGenericType &&
                             x.GetGenericTypeDefinition() == typeof(ICollection<>));
         }
 

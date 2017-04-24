@@ -4,6 +4,7 @@ using NDatabase.Api;
 using NDatabase.Api.Query;
 using NDatabase.Exceptions;
 using NDatabase.Meta;
+using System.Reflection;
 
 namespace NDatabase.Core.Query.Criteria.Evaluations
 {

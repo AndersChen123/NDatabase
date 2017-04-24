@@ -14,13 +14,13 @@ namespace TutorialWebSite
             if (IsPostBack)
                 return;
 
-            ID.Text = "-1";
+            IDTextBox.Text = "-1";
         }
 
         protected void RemoveButton_Click(object sender, EventArgs e)
         {
             var dbPath = HttpContext.Current.Server.MapPath(DbPath);
-            var id = Convert.ToInt64(ID.Text);
+            var id = Convert.ToInt64(IDTextBox.Text);
 
             try
             {
@@ -29,7 +29,7 @@ namespace TutorialWebSite
                     odb.DeleteObjectWithId(OIDFactory.BuildObjectOID(id));
                 }
 
-                ID.Text = "-1";
+                IDTextBox.Text = "-1";
                 ErrorMessage.Text = string.Empty;
             }
             catch (Exception exception)

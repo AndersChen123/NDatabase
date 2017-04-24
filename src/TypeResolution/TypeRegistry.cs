@@ -394,7 +394,7 @@ namespace NDatabase.TypeResolution
         /// </exception>
         public static Type ResolveType(string alias)
         {
-            if (string.IsNullOrWhiteSpace(alias))
+            if (string.IsNullOrEmpty(alias))
                 throw new ArgumentNullException("alias");
 
             Type type;

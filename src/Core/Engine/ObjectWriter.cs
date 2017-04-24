@@ -365,8 +365,13 @@ namespace NDatabase.Core.Engine
             return _nonNativeObjectWriter.UpdateNonNativeObjectInfo(nnoi, forceUpdate);
         }
 
+        private long WriteAtomicNativeObject(AtomicNativeObjectInfo anoi, bool writeInTransaction)
+        {
+            return WriteAtomicNativeObject(anoi, writeInTransaction, -1);
+        }
+
         private long WriteAtomicNativeObject(AtomicNativeObjectInfo anoi, bool writeInTransaction,
-                                                    int totalSpaceIfString = -1)
+                                                    int totalSpaceIfString)
         {
             var startPosition = FileSystemProcessor.FileSystemInterface.GetPosition();
             var odbTypeId = anoi.GetOdbTypeId();

@@ -48,7 +48,7 @@ namespace NDatabase.TypeResolution
         /// </summary>
         public bool IsAssemblyQualified
         {
-            get { return !string.IsNullOrWhiteSpace(GetAssemblyName()); }
+            get { return !string.IsNullOrEmpty(GetAssemblyName()); }
         }
 
         private void SplitTypeAndAssemblyNames(string originalTypeName)

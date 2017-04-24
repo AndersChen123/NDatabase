@@ -42,14 +42,12 @@ namespace NDatabase.Core.Query.Linq
             {
                 case "EndsWith":
                 {
-                    var caseSensitive = IsCaseSensitive(call.Arguments);
-                    RecordConstraintApplication(c => c.EndsWith(caseSensitive));
+                    RecordConstraintApplication(c => c.EndsWith(true));
                     return;
                 }
                 case "StartsWith":
                 {
-                    var caseSensitive = IsCaseSensitive(call.Arguments);
-                    RecordConstraintApplication(c => c.StartsWith(caseSensitive));
+                    RecordConstraintApplication(c => c.StartsWith(true));
                     return;
                 }
 
@@ -63,34 +61,6 @@ namespace NDatabase.Core.Query.Linq
             }
 
             CannotConvertToSoda(call);
-        }
-
-        private static bool IsCaseSensitive(ReadOnlyCollection<Expression> arguments)
-        {
-            if (arguments.Count == 1)
-                return true;
-
-            var expression = arguments[1];
-
-            if (expression.NodeType == ExpressionType.IsFalse)
-                return true;
-
-            if (expression.NodeType == ExpressionType.IsTrue)
-                return false;
-
-            if (expression.Type.IsEnum)
-            {
-                var constantExpression = expression as ConstantExpression;
-                if (constantExpression != null)
-                {
-                    if (constantExpression.Value.ToString().EndsWith("IgnoreCase"))
-                        return false;
-                }
-
-                return true;
-            }
-
-            return true;
         }
 
         private void RecordConstraintApplication(Func<IConstraint, IConstraint> application)

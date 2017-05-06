@@ -1,5 +1,5 @@
 # NDatabase
-Import from https://ndatabase.codeplex.com
+Fork from https://ndatabase.codeplex.com
 
 NDatabase is a easy to use .NET Object Database. To avoid impedance mismatch overhead between Object and Relational worlds, give a try to NDatabase. NDatabase is a new generation Object Database: a real native and transparent persistence layer for .NET.
 Object because the basic persistent unit is an object, not a table.
